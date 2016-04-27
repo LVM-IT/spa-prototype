@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Berufsuche</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="scripts/bootstrap/css/bundle.css">
+  <link rel="stylesheet" href="styles/main.css">
+
+</head>
+<body ng-app="lvmJobSearchApp">
+  <jsa-header></jsa-header>
+  <div class="container-fluid">
+    <div ui-view></div>
+  </div>
+
+  <script src="scripts/systemjs/dist/system-polyfills.js"></script>
+  <script src="scripts/systemjs/dist/system.js"></script>
+  <script src="scripts/jquery/jquery.min.js"></script>
+  <script src="scripts/bootstrap/js/bootstrap.min.js"></script>
+  <script src="scripts/angular/angular.min.js"></script>
+  <script src="scripts/angular-ui-router/angular-ui-router.js"></script>
+  <script src="app/app.js"></script>
+  <script src="app/directives/header/header.js"></script>
+  <script src="app/states/search/search.js"></script>
+  <script src="app/services/jobSearchService.js"></script>
+  <script src="app/services/urlParameterService.js"></script>
+  <script src="app/services/lasService.js"></script>
+  <script>
+    System.config({
+      packages: {
+        lvm: { format: 'register', defaultExtension: 'js' }
+      }
+    });
+
+  </script>
+</body>
+</html>

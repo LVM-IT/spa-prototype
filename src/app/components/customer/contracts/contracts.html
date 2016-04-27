@@ -1,0 +1,38 @@
+<h3>Verträge</h3>
+<div class="row" *ngIf="contracts">
+    <div class="col-md-12">
+        <table class="table table-responsive table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th>Versicherungsnummer</th>
+                    <th>Sparte</th>
+                    <th>Fahrzeugart</th>
+                    <th>Kennzeichen</th>
+                    <th>Zahlungsweise</th>
+                    <th>Beitrag</th>
+                </tr>
+            </thead>
+            <tbody>
+                <template ngFor #c [ngForOf]="contracts">
+                    <tr>
+                        <td>
+                            <a [routerLink]="['Contract', {category: 'vertrag', categoryId: c.vsnr}]">{{c.vsnr}}</a>
+                        </td>
+                        <td>{{c.sparte}}</td>
+                        <td>PKW</td>
+                        <td>M AB-1234</td>
+                        <td>monatlich</td>
+                        <td>{{c.beitragZent / 100}}</td>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div *ngIf="!contracts" class="row">
+    <div class="col-md-12">
+        <div class="well">
+            Für diesen Partner liegen noch keine Verträge vor
+        </div>
+    </div>
+</div>

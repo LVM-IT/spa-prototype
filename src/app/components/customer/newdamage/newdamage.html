@@ -1,0 +1,133 @@
+<h3>Schaden erfassen</h3>
+
+<form class="form-horizontal">
+    <div>
+
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Auskunft</a>
+            </li>
+            <li role="presentation"><a href="#description" aria-controls="description" role="tab" data-toggle="tab">Beschreibung</a>
+            </li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="home">
+                <div class="row medium-space">
+                    <div class="col-md-6">
+                        <lvm-control [caption]="'Schadenstatus'">
+                            <select class="form-control" [(ngModel)]="damage.status">
+                                <option value="vorläufigerSchaden">vorläufiger Schaden</option>
+                            </select>
+                        </lvm-control>
+                        <lvm-control [caption]="'Bearbeiter'" >
+                            <input type="text" class="form-control" [(ngModel)]="damage.bearbeiter"/>
+                        </lvm-control>
+                    </div>
+                    <div class="col-md-6">
+                        <lvm-control [caption]="'Vertrauensmann'">
+                            <input type="text" class="form-control" [(ngModel)]="damage.vertrauensmann" disabled/>
+                        </lvm-control>
+                    </div>
+                </div>
+
+                <hr/>
+                <div class="row">
+                    <div class="col-md-6">
+                        <lvm-control [caption]="'Kennzeichen'">
+                            <input type="text" class="form-control" disabled [(ngModel)]="damage.kennzeichen"/>
+                        </lvm-control>
+                        <lvm-control [caption]="'Risiko'">
+                            <input type="text" class="form-control" [(ngModel)]="damage.risiko"/>
+                        </lvm-control>
+                        <lvm-control [caption]="'Mahnaktion'">
+                            <input type="text" class="form-control" [(ngModel)]="damage.mahnaktion"/>
+                        </lvm-control>
+                    </div>
+                    <div class="col-md-6">
+                        <lvm-control [caption]="'Leistungsfrei'">
+                            <input type="text" class="form-control" [(ngModel)]="damage.leistungsfrei">
+                        </lvm-control>
+                        <lvm-control [caption]="'Selbstbet. / V.-Summe'">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="number" class="form-control" [(ngModel)]="damage.selbstbeteiligung"
+                                           min="0"/>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="number" class="form-control" [(ngModel)]="damage.verischerungsSumme"
+                                           min="0"/>
+                                </div>
+                            </div>
+                        </lvm-control>
+                        <lvm-control [caption]="'Versicherungsbed.'">
+                            <input type="text" class="form-control" [(ngModel)]="damage.versicherungsBegingung"/>
+                        </lvm-control>
+                    </div>
+                </div>
+
+                <hr/>
+                <div class="row">
+                    <div class="col-md-6">
+                        <lvm-control [caption]="'Schadenstag / -zeit'">
+                            <input type="text" id="dayOfDamage" class="form-control" datepicker
+                                   [initValue]="damage.dayOfDamage" [maxDate]="today"
+                                   (onDateChanged)="onDamageDayChanged($event)"/>
+                        </lvm-control>
+                        <lvm-control [caption]="'Reserve'">
+                            <input type="number" class="form-control" [(ngModel)]="damage.reserve" min="0"/>
+                        </lvm-control>
+                        <lvm-control [caption]="'Deckung Vers-Nehmer'">
+                            <input type="text" class="form-control" disabled
+                                   [(ngModel)]="damage.deckungVersicherungsNehmer"/>
+                        </lvm-control>
+                    </div>
+                    <div class="col-md-6">
+                        <lvm-control [caption]="'Schadenart'">
+                            <select class="form-control" [(ngModel)]="damage.art">
+                                <option value="brand">Brand</option>
+                                <option value="verkehrsunfall">Verkehrsunfall</option>
+                            </select>
+                        </lvm-control>
+                        <lvm-control [caption]="'Forderung'">
+                            <input type="number" min="0" [(ngModel)]="damage.forderung" class="form-control"/>
+                        </lvm-control>
+                        <lvm-control [caption]="'Deckung mitvers. Pers.'">
+                            <input type="number" class="form-control" [(ngModel)]="damage.deckungMitversichertePerson"
+                                   min="0"/>
+                        </lvm-control>
+                        <lvm-control [caption]="'weitere Schäden'">
+                            <input type="number" class="form-control" [(ngModel)]="damage.weitereSchaeden"/>
+                        </lvm-control>
+                    </div>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="description">
+                <div class="row medium-space">
+                    <div class="col-md-6">
+                        <lvm-control [caption]="'Kurzbeschr. Schadensereignis'">
+                            <textarea class="form-control" rows="3"
+                                      [(ngModel)]="damage.kurzbeschreibungSchadensereignis"></textarea>
+                        </lvm-control>
+                        <lvm-control [caption]="'Schadenhergang'">
+                            <textarea class="form-control" rows="6" [(ngModel)]="damage.schadensHergang"></textarea>
+                        </lvm-control>
+                    </div>
+                    <div class="col-md-6">
+                        <lvm-control [caption]="'Meldung durch'">
+                            <input type="text" class="form-control" [(ngModel)]="damage.meldungDurch"/>
+                        </lvm-control>
+                        <lvm-control [caption]="'Schadenort'">
+                            <input type="text" class="form-control" [(ngModel)]="damage.schadensOrt"/>
+                        </lvm-control>
+                        <lvm-control [caption]="'Angabe zum Verschulden'">
+                            <textarea class="form-control" rows="3" [(ngModel)]="damage.verschuldungsAngabe"></textarea>
+                        </lvm-control>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</form>

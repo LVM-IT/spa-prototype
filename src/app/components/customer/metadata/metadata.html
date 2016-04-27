@@ -1,0 +1,146 @@
+<div class="row customer-metadata" *ngIf="customer">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <form class="form-horizontal">
+            <div class="panel panel-success">
+                <div class="panel-heading clickable" (click)="isMinimized = !isMinimized">
+                    <span>{{ customer.anrede }} {{ customer.vorname }} {{ customer.name }}</span>
+                    <span *ngIf="isMinimized"> - {{customer.anschrift.strasse}} in {{customer.anschrift.plz}} {{customer.anschrift.ort}}</span>
+                    <div class="pull-right">
+                        <span *ngIf="isSaving" class="glyphicon glyphicon-refresh rotating"></span>
+                    <span class="glyphicon"
+                          [ngClass]="{'glyphicon-chevron-up': !isMinimized, 'glyphicon-chevron-down': isMinimized}"></span>
+                    </div>
+                </div>
+
+                <div class="panel-body" [hidden]="isMinimized">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="row">
+                                <label class="col-sm-3 control-label">Straße</label>
+                                <div class="col-sm-9">
+                                    <input [disabled]="!isInEditMode" class="form-control" type="text" required
+                                           [(ngModel)]="customer.anschrift.strasse" placeholder="Strasse"/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="col-sm-3 control-label">PLZ / Ort</label>
+                                <div *ngIf="!isInEditMode" class="col-sm-9">
+                                    <input type="text" disabled class="form-control"
+                                           value="{{customer.anschrift.plz}} {{customer.anschrift.ort}}"/>
+                                </div>
+                                <div *ngIf="isInEditMode" class="col-sm-3"><input class="form-control text-right"
+                                                                                  type="text"
+                                                                                  required
+                                                                                  [(ngModel)]="customer.anschrift.plz"
+                                                                                  placeholder="PLZ"/>
+                                </div>
+                                <div *ngIf="isInEditMode" class="col-sm-6">
+                                    <input class="form-control" type="text" required
+                                           [(ngModel)]="customer.anschrift.ort" placeholder="Ort"/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="col-sm-3 control-label">Stadtteil</label>
+                                <div class="col-sm-9">
+                                    <input [disabled]="!isInEditMode" class="form-control" type="text" required
+                                           [(ngModel)]="customer.anschrift.stadtteil" placeholder="Stadtteil"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="row">
+                                <label class="col-sm-4 control-label">Geburtsdatum</label>
+                                <div class="col-sm-8">
+                                    <input [disabled]="!isInEditMode" class="form-control" type="text" required
+                                           [(ngModel)]="customer.geburtsdatum" placeholder="Geburtsdatum"/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="col-sm-4 control-label">Familienstand</label>
+                                <div *ngIf="!isInEditMode" class="col-sm-8">
+                                    <input type="text" disabled class="form-control"
+                                           value="{{customer.familienstand}} {{customer.anzahlKinder || 'keine'}} Kinder"/>
+                                </div>
+                                <div *ngIf="isInEditMode" class="col-sm-4">
+                                    <input class="form-control" type="text" required
+                                           [(ngModel)]="customer.familienstand" placeholder="ledig"/>
+                                </div>
+                                <label *ngIf="isInEditMode" class="col-sm-2 control-label">Kinder</label>
+                                <div *ngIf="isInEditMode" class="col-sm-2">
+                                    <input class="form-control" type="number" min="0" max="15" required
+                                           [(ngModel)]="customer.anzahlKinder" placeholder="1"/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="col-sm-4 control-label">Beruf</label>
+                                <div class="col-sm-8">
+                                    <div class="input-group">
+                                    <input [disabled]="!isInEditMode" class="form-control" type="text" required
+                                           [(ngModel)]="customer.beruf" placeholder="Informatiker"/>
+                                        <div [hidden]="!isInEditMode" class="input-group-addon" (click)="openJobSelection()">
+                                            <i class="glyphicon glyphicon-option-horizontal"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="col-sm-4 control-label">Nationalität</label>
+                                <div class="col-sm-8">
+                                    <input [disabled]="!isInEditMode" class="form-control" type="text" required
+                                           [(ngModel)]="customer.staatsang" placeholder="Deutsch"/>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="row">
+                                <label class="col-sm-1 control-label"><span
+                                        class="glyphicon glyphicon-earphone"></span></label>
+                                <div *ngIf="!isInEditMode" class="col-sm-11">
+                                    <input type="text" disabled class="form-control"
+                                           value="{{customer.telnummer}} (privat)"/>
+                                </div>
+                                <div *ngIf="isInEditMode" class="col-sm-11">
+                                    <input class="form-control" type="text" required
+                                           [(ngModel)]="customer.telnummer" placeholder="kein Angabe"/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="col-sm-1 control-label"><span
+                                        class="glyphicon glyphicon-envelope"></span></label>
+                                <div class="col-sm-11">
+                                    <input [disabled]="!isInEditMode" class="form-control" type="text"
+                                           [(ngModel)]="customer.email" placeholder="keine Angabe"/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="col-sm-1 control-label"><span
+                                        class="glyphicon glyphicon-globe"></span></label>
+                                <div class="col-sm-11">
+                                    <input [disabled]="!isInEditMode" class="form-control" type="text" 
+                                           [(ngModel)]="customer.website" placeholder="keine Angabe"/>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer" [hidden]="isMinimized">
+                    <div class="row">
+                        <div class="col-md-3 col-md-offset-9">
+                            <div class="pull-right">
+                        <button *ngIf="isInEditMode" class="btn btn-primary" (click)="saveChanges()"><span
+                                class="glyphicon glyphicon-save"></span> Speichern</button>
+                        <span *ngIf="!isInEditMode" class="accent clickable" (click)="startEditMode()"><span
+                                class="glyphicon glyphicon-edit"></span> Bearbeiten</span>
+                            <span *ngIf="isInEditMode" class="accent clickable"
+                                  (click)="cancelChanges()">Abbrechen</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>

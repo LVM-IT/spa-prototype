@@ -1,0 +1,40 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h3 class="panel-title">Derzeitige berufliche Tätigkeit ermitteln</h3>
+            </div>
+            <div class="panel-body">
+                <form class="form-horizontal search-form" ng-submit="search()">
+                    <div class="form-group">
+                        <div class="input-group col-sm-12">
+                            <input type="text" class="form-control" id="jobSearch" ng-model="searchText" placeholder="Informatiker, Handwerker, ...">
+                            <span class="input-group-btn">
+                                <button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-search"></i></button>
+                            </span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h3 class="panel-title">Ermittelte Berufe <span ng-show="searchResults">({{ searchResults.length }})</span></h3>
+            </div>
+            <ul class="list-group" ng-show="searchResults">
+                <li class="list-group-item clickable" ng-repeat="searchResult in searchResults" ng-click="select(searchResult)">{{ searchResult.name }}</li>
+            </ul>
+            <div class="panel-body" ng-hide="searchResults">
+                Bitte geben Sie eine Berufsbezeichnung ein.
+            </div>
+            <div class="panel-body" ng-show="searchResults && searchResults.length === 0">
+                Leider konnten zu Ihrer Anfrage &quot;{{ searchedText }}&quot; keine Berufe ermittelt werden.
+            </div>
+        </div>
+    </div>
+</div>

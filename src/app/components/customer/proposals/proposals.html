@@ -1,0 +1,30 @@
+<h3>Anträge</h3>
+<div class="row" *ngIf="proposals">
+    <div class="col-md-12">
+        <table class="table table-responsive table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th>Antrags Id</th>
+                    <th>Sparte</th>
+                    <th>Beitrag</th>
+                </tr>
+            </thead>
+            <tbody>
+                <template ngFor #p [ngForOf]="proposals">
+                    <tr>
+                        <td>{{p.antragId}}</td>
+                        <td>{{p.sparte}}</td>
+                        <td>{{p.beitragZent /100}}</td>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div *ngIf="!proposals" class="row">
+    <div class="col-md-8">
+        <div class="well">
+            Für diesen Partner liegen noch keine Anträge vor
+        </div>
+    </div>
+</div>

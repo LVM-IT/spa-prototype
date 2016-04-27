@@ -1,0 +1,30 @@
+<h4>Kundenkontakthistorie</h4>
+<div class="row" *ngIf="historyEntries">
+    <div class="col-md-12">
+        <table class="table table-responsive table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th>Kontaktart</th>
+                    <th>Datum / Uhrzeit</th>
+                    <th>Titel</th>
+                </tr>
+            </thead>
+            <tbody>
+                <template ngFor #c [ngForOf]="historyEntries">
+                    <tr>
+                        <td>{{c.kontaktart}}</td>
+                        <td>{{c.zeit}}</td>
+                        <td>{{c.titel}}</td>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div *ngIf="!historyEntries" class="row">
+    <div class="col-md-8">
+        <div class="well">
+            Für diesen Partner liegt noch keine Kontakthistorie vor
+        </div>
+    </div>
+</div>

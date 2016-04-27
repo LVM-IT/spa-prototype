@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LVM Prototype</title>
+    <!-- inject:css -->
+    <!-- endinject -->
+</head>
+<body>
+    <lvm-app>Loading LVM App</lvm-app>
+    <!-- inject:js -->
+    <!-- endinject -->
+
+    <script>
+        System.config({
+            packages: {
+                app: { format: 'register', defaultExtension: 'js' },
+                lvm: { format: 'register', defaultExtension: 'js' }
+            }
+        });
+        System.import('app/boot').then(null, console.error.bind(console));
+    </script>
+</body>
+</html>

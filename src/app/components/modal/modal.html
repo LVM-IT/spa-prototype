@@ -1,0 +1,36 @@
+<div class="modal fade" [class.in]="isVisible" [class.las-dialog]="isVisible" id="lasModal" tabindex="-1" role="dialog" aria-labelledby="lasModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header accent-bg">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="close()"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">{{_title}}</h4>
+            </div>
+            <div class="modal-body">
+                <iframe *ngIf="!hideIFrame "[src]="_popupSource" width="100%" height="500px"></iframe>
+                 <table *ngIf="errors" class="table table-bordered table-responsive">
+                     <thead>
+                         <tr>
+                             <th>Hinweistyp</th>
+                             <th>Fehlertext</th>
+                             <th>Feld</th>
+                             <th>Sprung zum Feld</th>
+                         </tr>
+                     </thead>
+                     <tbody>
+                         <tr *ngFor="#e of errors">
+                             <td class="text-center">
+                                 <span *ngIf="e.fehlerKategorie ===0" class="glyphicon glyphicon-info-sign accent"></span>
+                                 <span *ngIf="e.fehlerKategorie ===1" class="glyphicon glyphicon-warning-sign accent"></span>
+                                 <span *ngIf="e.fehlerKategorie ===2" class="glyphicon glyphicon-remove-sign accent"></span>
+                             </td>
+                             <td>{{e.fehlerText}}</td>
+                             <td>{{e.bezugsFeld}}</td>
+                             <td class="text-center"><span (click)="highlightErrorField(e.bezugsFeld)" class="clickable glyphicon glyphicon-arrow-right accent"></span></td>
+                         </tr>
+                     </tbody>
+                 </table>
+            </div>
+
+        </div>
+    </div>
+</div>

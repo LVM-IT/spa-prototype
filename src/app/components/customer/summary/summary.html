@@ -1,0 +1,76 @@
+<h3 class="accent">Kunden Deckblatt</h3>
+<customer-housekeeping [customerId]="customerId"></customer-housekeeping>
+<customer-history [customerId]="customerId"></customer-history>
+
+<h4>Verträge / Anträge / Angebote</h4>
+<div class="row" *ngIf="proposals || contracts || offers">
+    <div class="col-md-12">
+        <table class="table table-responsive table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th>Status</th>
+                    <th>als / bei wem</th>
+                    <th>Vers-Schein-Nr.</th>
+                    <th>Agentur</th>
+                    <th>Sparte</th>
+                    <th>Versichert ist</th>
+                    <th>Schäden</th>
+                    <th>Vers.-Ablauf</th>
+                    <th>Zahl.-Weise</th>
+                    <th>Beitrag</th>
+                </tr>
+            </thead>
+            <tbody>
+                <template ngFor #proposal [ngForOf]="proposals">
+                    <tr>
+                        <td>Antrag</td>
+                        <td>Versicherungnehmer</td>
+                        <td>{{proposal.antragId}}</td>
+                        <td>0471/100</td>
+                        <td>{{proposal.sparte}}</td>
+                        <td>R3k Riester</td>
+                        <td>0</td>
+                        <td>&nbsp;</td>
+                        <td>jährlich</td>
+                        <td>{{proposal.beitragZent / 100}}</td>
+                    </tr>
+                </template>
+                <template ngFor #offer [ngForOf]="offers">
+                    <tr>
+                        <td>Angebot</td>
+                        <td>Versicherungnehmer</td>
+                        <td>{{offer.angebotId}}</td>
+                        <td>{{offer.agentur}}</td>
+                        <td>{{offer.sparte}}</td>
+                        <td>{{offer.versichertist}}</td>
+                        <td>{{offer.schaeden}}</td>
+                        <td>{{offer.ablauf}}</td>
+                        <td>{{offer.zahlungsweise}}</td>
+                        <td>{{offer.beitragZent/100}}</td>
+                    </tr>
+                </template>
+                <template ngFor #contract [ngForOf]="contracts">
+                    <tr>
+                        <td>Vertrag</td>
+                        <td>Versicherungnehmer</td>
+                        <td>{{contract.vsnr}}</td>
+                        <td>0471/100</td>
+                        <td>{{contract.sparte}}</td>
+                        <td>M AB-123 (PKW)</td>
+                        <td>0</td>
+                        <td>02.02.2018</td>
+                        <td>monatlich</td>
+                        <td>{{contract.beitragZent / 100}}</td>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div *ngIf="!proposals" class="row">
+    <div class="col-md-8">
+        <div class="well">
+            Für diesen Partner liegen noch keine Anträge vor
+        </div>
+    </div>
+</div>

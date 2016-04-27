@@ -1,0 +1,41 @@
+<h3>Angebote</h3>
+<div class="row" *ngIf="offers">
+    <div class="col-md-12">
+        <table class="table table-responsive table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Sparte</th>
+                    <th>Rolle</th>
+                    <th>Agentur</th>
+                    <th>Zahlweise</th>
+                    <th>Betrag</th>
+                    <th class="text-center">Aktionen</th>
+                </tr>
+            </thead>
+            <tbody>
+                <template ngFor #offer [ngForOf]="offers">
+                    <tr>
+                        <td>{{offer.angebotId}}</td>
+                        <td>{{offer.sparte}}</td>
+                        <td>{{offer.rolle}}</td>
+                        <td>{{offer.agentur}}</td>
+                        <td>{{offer.zahlungsweise}}</td>
+                        <td>{{offer.beitragZent/100}}</td>
+                        <td class="text-center">
+                            <i class="clickable glyphicon glyphicon-copy" title="Angebot kopieren" (click)="copyOffer(offer.angebotId)"></i>
+                            <i class="clickable glyphicon glyphicon-pencil" title="Angebot bearbeiten" [routerLink]="['EditOffer', {offerId: offer.angebotId}]"></i>
+                        </td>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div *ngIf="!offers" class="row">
+    <div class="col-md-8">
+    <div class="well">
+        Für diesen Partner liegen noch keine Angebote vor
+    </div>
+    </div>
+</div>

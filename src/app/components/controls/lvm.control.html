@@ -1,0 +1,6 @@
+<div class="form-group" data-toggle="popover" [title]="helpCaption" data-container="body" data-trigger="manual" [attr.data-content]="helpText"  *ngIf="!isProtected" >
+    <label class="col-sm-3 control-label">{{caption}}</label>
+    <div class="col-sm-9">
+        <ng-content></ng-content>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+<div class="customer-overview-tree-view-item" [ngClass]="item.additionalCssClasses">
+    <div *ngIf="item.children.length === 0" class="item-header">
+        <a *ngIf="treeLevel <= 1" class="item-header-text" [routerLink]="item.linkParams">
+            <i class="glyphicon glyphicon-chevron-right"></i>
+            <span>{{ item.name }}</span>
+        </a>
+        <span *ngIf="treeLevel > 1" class="item-header-text">
+            <i class="glyphicon glyphicon-option-vertical"></i>
+            <span>{{ item.name }}</span>
+        </span>
+    </div>
+    <div class="item-header" *ngIf="item.children.length !== 0">
+        <div *ngIf="treeLevel !== 1" (click)="item.isExpanded = !item.isExpanded" class="item-header-text has-children">
+            <span>{{ item.name }}</span>
+            <i class="glyphicon glyphicon-chevron-right" [ngClass]="{'open': item.isExpanded}"></i>
+        </div>
+        <a *ngIf="treeLevel === 1 && item.linkParams.length > 0" [routerLink]="item.linkParams" class="item-header-text has-children">
+            <span>{{ item.name }}</span>
+            <i class="glyphicon glyphicon-chevron-right" [ngClass]="{'open': item.isExpanded}"></i>
+        </a>
+    </div>
+
+    <div *ngIf="item.children" class="customer-overview-tree-view-item-children" [hidden]="!item.isExpanded">
+        <customer-overview-tree-view-item *ngFor="#child of item.children"
+                                          [item]="child" [treeLevel]="nextTreeLevel"></customer-overview-tree-view-item>
+    </div>
+</div>

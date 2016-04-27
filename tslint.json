@@ -1,0 +1,30 @@
+{
+  "rules": {
+    "curly": true,
+    "eofline": true,
+    "interface-name": true,
+    "jsdoc-format": true,
+    "member-access": true,
+    "member-ordering": [
+      true,
+      "public-before-private",
+      "static-before-instance",
+      "variables-before-functions"
+    ],
+    "no-consecutive-blank-lines": true,
+    "no-debugger": true,
+    "no-eval": true,
+    "triple-equals": [
+      true,
+      "allow-null-check"
+    ],
+    "no-console": [
+      true,
+      "debug",
+      "info",
+      "time",
+      "timeEnd",
+      "trace"
+    ]
+  }
+}

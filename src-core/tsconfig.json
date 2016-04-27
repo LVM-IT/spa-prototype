@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "module": "system",
+    "target": "es5",
+    "sourceMap": true,
+    "experimentalDecorators": true,
+    "declaration": true
+  },
+  "exclude": [
+    "node_modules",
+    "dist",
+    "dist-core"
+  ]
+}

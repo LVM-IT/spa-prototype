@@ -1,0 +1,27 @@
+<h3 class="accent"><a ui-sref="^" open-in-new-tab>{{ firstName }} {{ lastName }}</a></h3>
+<h4>{{ sampleData.deckungsart }}</h4>
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-responsive table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th>Deckungsart</th>
+                    <th>Versicherungssumme</th>
+                    <th>Berechnungsmodell</th>
+                    <th>Beschreibung</th>
+                    <th>Beitrag</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ sampleData.deckungsart }}</td>
+                    <td>{{ sampleData.summe | number:2 }} €</td>
+                    <td>{{ sampleData.berechnungsmodell }}</td>
+                    <td>{{ sampleData.beschreibung }}</td>
+                    <td>{{ sampleData.beitrag | number:2 }} €</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

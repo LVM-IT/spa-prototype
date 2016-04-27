@@ -1,0 +1,9 @@
+{
+  "port": 9888,
+  "files": ["./src-schufa-app/**/*.{html,htm,css,js}"],
+  "server": { "baseDir": "./src-schufa-app/" },
+  "open": false,
+  "ui": {
+    "port": 9995
+  }
+}

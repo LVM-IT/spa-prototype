@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Brief erstellen</title>
+    <link rel="stylesheet" href="styles/bundle.css" />
+    <link rel="stylesheet" href="styles/app.css" />
+    <script src="scripts/jquery.min.js"></script>
+</head>
+<body>
+    <div id="wizard"></div>
+    <script src="scripts/system-polyfills.js"></script>
+    <script src="scripts/system.js"></script>
+
+    <script>
+        System.config({
+            packages: {
+                lvm: { format: 'register', defaultExtension: 'js' }
+            }
+        });
+    </script>
+
+    <script src="dist/bundle.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<div class="row big-space customer-search">
+
+    <div class="col-md-6 col-md-offset-3">
+        <div class="pull-right">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" [(ngModel)]="showCustomers">
+                    Kunden
+                </label>
+            </div>
+        </div>
+        <div class="pull-right">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" [(ngModel)]="showProspects">
+                    Interessenten
+                </label>
+            </div>
+        </div>
+        <div class="pull-right">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" [(ngModel)]="showOthers">
+                    Sonstige
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-md-offset-3">
+        <div class="input-group input-group-lg">
+                <span class="input-group-addon" id="sizing-addon1"><span
+                        class="glyphicon glyphicon-search"></span></span>
+            <input type="text" [ngFormControl]="term" class="form-control" placeholder="Kunde/Versicherungssscheinnummer suchen ..."
+                   aria-describedby="sizing-addon1">
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <ul class="list-group">
+            <li class="list-group-item clickable" *ngIf="contract" [routerLink]="['Customer', { id: contract.partnerId }, 'Contract', { category: 'vertrag', categoryId: contract.vsnr }]">
+                <div>
+                    <span class="search-result glyphicon glyphicon-paperclip"></span> Vertrag {{ contract.vsnr }} öffnen
+                </div>
+            </li>
+            <li class="list-group-item clickable" *ngFor="#i of items"
+                [routerLink]="['Customer', {id: i.partnerId}]" (click)="onOpenCustomer(i)">
+
+                <div><span class="search-result glyphicon glyphicon-user" [class.accent]="i.status==='Kunde'"
+                           [class.second-accent]="i.status!=='Kunde'"></span><b>{{i.vorname}} {{i.name}}</b></div>
+                <div>{{i.anschrift.strasse}} {{i.anschrift.plz}} {{i.anschrift.ort}}</div>
+            </li>
+        </ul>
+    </div>
+</div>

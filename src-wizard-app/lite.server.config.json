@@ -1,0 +1,9 @@
+{
+  "port": 9899,
+  "files": ["./src-wizard-app/**/*.{html,htm,css,js}"],
+  "server": { "baseDir": "./src-wizard-app/" },
+  "open": false,
+  "ui": {
+    "port": 9996
+  }
+}

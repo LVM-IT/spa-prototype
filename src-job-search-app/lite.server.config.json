@@ -1,0 +1,9 @@
+{
+  "port": 9898,
+  "files": ["./src-job-search-app/**/*.{html,htm,css,js}"],
+  "server": { "baseDir": "./src-job-search-app/" },
+  "open": false,
+  "ui": {
+    "port": 9997
+  }
+}

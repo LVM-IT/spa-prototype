@@ -1,0 +1,43 @@
+<div class="row" ng-if="customer">
+    <div class="col-md-12 no-margin">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                SCHUFA Bonitätsprüfung
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <label><input type="checkbox" ng-model="model.allowsSchufa" ng-change="schufaChanged()"> {{ customer.anrede }} {{ customer.vorname }} {{ customer.name }} hat die Zustimmung für die SCHUFA Bonitätsabfrage erhalten und unterschrieben.</label>
+                    </div>
+                </div>
+                <div class="row" ng-show="model.allowsSchufa">
+                    <div class="col-md-12">Klicken Sie den nachfolgenden Button um eine SCHUFA Bonitätsprüfung für
+                        {{ customer.anrede }} {{ customer.vorname }} {{ customer.name }} zu starten.
+                    </div>
+                </div>
+                <div class="row margin-top" ng-show="model.allowsSchufa">
+                    <div class="col-md-12 text-center">
+                        <div class="loader" ng-show="model.isChecking"></div>
+                        <button type="button" class="btn btn-primary" ng-click="check()" ng-hide="model.isChecking">Bonitätsprüfung für {{ customer.anrede }} {{ customer.vorname }} {{ customer.name }} <span ng-show="model.checkDone">erneut</span> starten</button>
+                    </div>
+                </div>
+                <div class="row margin-top" ng-show="model.checkDone && model.allowsSchufa">
+                    <div class="col-md-12">
+                        <p>
+                        Die Bonitätsprüfung wurde mit folgendem Ergebnis abschlossen:
+                        <span ng-show="model.rating === 0" class="label label-success">Sehr geringes Risiko</span>
+                        <span ng-show="model.rating === 1" class="label label-success">Geringes bis überschaubares Risiko</span>
+                        <span ng-show="model.rating === 2" class="label label-warning">Zufriedenstellendes bis erhöhtes Risiko</span>
+                        <span ng-show="model.rating === 3" class="label label-warning">Deutlich erhöhtes bis hohes Risiko</span>
+                        <span ng-show="model.rating === 4" class="label label-danger">Sehr hohes Risiko</span>
+                        <span ng-show="model.rating === 5" class="label label-danger">Sehr kritisches Risiko</span>
+                        </p>
+                        <p>
+                            <button type="button" class="btn btn-sm btn-default" ng-click="print()">Bonitätsauskunft ausdrucken</button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

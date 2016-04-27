@@ -1,0 +1,30 @@
+<h3 class="accent">{{ firstName }} {{ lastName }}</h3>
+<h4>Versicherungsumfang</h4>
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-responsive table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th>Deckungsart</th>
+                    <th>Versicherungssumme</th>
+                    <th>Berechnungsmodell</th>
+                    <th>Beschreibung</th>
+                    <th>Beitrag</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="data in sampleData">
+                    <td><a ui-sref=".deckung({id: data.id})" open-in-new-tab>{{ data.deckungsart }}</a></td>
+                    <td>{{ data.summe | number:2 }} €</td>
+                    <td>{{ data.berechnungsmodell }}</td>
+                    <td>{{ data.beschreibung }}</td>
+                    <td>{{ data.beitrag | number:2 }} €</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="pull-right">
+            monatliche Summe: {{ getSum() | number:2 }} €
+        </p>
+    </div>
+</div>

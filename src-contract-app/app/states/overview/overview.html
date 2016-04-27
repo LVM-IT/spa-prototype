@@ -1,0 +1,123 @@
+<div ng-show="contract">
+    <h3>Vertrag {{ contract.vsnr }}</h3>
+    <h5>
+        Fahrzeug: <strong>{{ contract.fahrzeugdaten.fahrzeugart }}</strong> mit amtl. Kennzeichen <strong>{{
+        contract.fahrzeugdaten.kennzeichen }}</strong>
+    </h5>
+
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <span>Fahrzeugdaten</span>
+        </div>
+
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="row">
+                        <label class="col-sm-6 control-label">Fahrzeugart</label>
+                        <span class="col-sm-6 accent">{{ contract.fahrzeugdaten.fahrzeugart }}</span>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-6 control-label">Kennzeichen</label>
+                        <span class="col-sm-6 accent">{{ contract.fahrzeugdaten.kennzeichen }}</span>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-6 control-label">HSN</label>
+                        <span class="col-sm-6 accent">{{ contract.fahrzeugdaten.hsn }}</span>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-6 control-label">Typschlüssel</label>
+                        <span class="col-sm-6 accent">{{ contract.fahrzeugdaten.typschl }}</span>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-6 control-label">Erstzulassung</label>
+                        <span class="col-sm-6 accent">{{ contract.fahrzeugdaten.erstzulassung }}</span>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-6 control-label">Fahrgestellnr.</label>
+                        <span class="col-sm-6 accent">{{ contract.fahrzeugdaten.fahrgestell }}</span>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-6 control-label">Fahrzeugstärke (PS)</label>
+                        <span class="col-sm-6 accent">{{ contract.fahrzeugdaten.fahrzeugstaerkePS }}</span>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-6 control-label">Austauschmotor</label>
+                        <span class="col-sm-6 accent">{{ contract.fahrzeugdaten.austauschmotor | yesNo }}</span>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-6 control-label">Kennzeichenart</label>
+                        <span class="col-sm-6 accent">{{ contract.fahrzeugdaten.kennzeichenart }}</span>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-6 control-label">Wechselkennzeichen</label>
+                        <span class="col-sm-6 accent">{{ contract.fahrzeugdaten.wechselkennzeichen | yesNo }}</span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="row">
+                        <label class="col-sm-6 control-label">Beliebige Fahrer</label>
+                        <span class="col-sm-6 accent">{{ contract.nutzung.beliebigeFahrer }}</span>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-6 control-label">Nachtabstellplatz</label>
+                        <span class="col-sm-6 accent">{{ contract.nutzung.nachtAbstellplatz }}</span>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-6 control-label">Fahrleistung (km)</label>
+                        <span class="col-sm-6 accent">{{ contract.nutzung.fahrleistungKm }}</span>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-6 control-label">Kilometerstand</label>
+                        <span class="col-sm-6 accent">{{ contract.nutzung.kilometerstand }}</span>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-6 control-label">Abweichender Fahrzeughalter</label>
+                        <span class="col-sm-6 accent">{{ contract.nutzung.abweichenderFahrzeughalter | yesNo }}</span>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-6 control-label">Nutzung</label>
+                        <span class="col-sm-6 accent">{{ contract.nutzung.nutzung }}</span>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-6 control-label">Eigentum</label>
+                        <span class="col-sm-6 accent">{{ contract.nutzung.selbstGenEigentum | yesNo }}</span>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-6 control-label">Wohneigentumsart</label>
+                        <span class="col-sm-6 accent">{{ contract.nutzung.wohneigentumart }}</span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="row">
+                        <label class="col-sm-6 control-label">Haftplicht (SFR)</label>
+                        <span class="col-sm-6 accent">{{ contract.versSchutz.haftpflichSFR }}</span>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-6 control-label">Vollkasko (SFK)</label>
+                        <span class="col-sm-6 accent">{{ contract.versSchutz.volkaskoSFR }}</span>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-6 control-label">Tarifgruppe</label>
+                        <span class="col-sm-6 accent">{{ contract.versSchutz.tarifgruppe }}</span>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-6 control-label">Rahmenvertrag</label>
+                        <span class="col-sm-6 accent">{{ contract.versSchutz.rahmenvertrag }}</span>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-6 control-label">Versicherungsbeginn</label>
+                        <span class="col-sm-6 accent">{{ contract.versSchutz.versBeginn }}</span>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-6 control-label">Zahlungsweise</label>
+                        <span class="col-sm-6 accent">{{ contract.versSchutz.zahlungsweise }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    Kunde hat Schufa akzeptiert: <span ng-show="clientAcceptedSchufa" class="label label-success">Ja</span><span ng-hide="clientAcceptedSchufa" class="label label-warning">Nein</span>
+    <iframe ng-if="iFrameSource" ng-src="{{iFrameSource}}" width="100%" height="{{ iFrameHeight }}"></iframe>
+</div>

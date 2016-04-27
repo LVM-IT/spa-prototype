@@ -1,0 +1,6 @@
+<div class="treeview" *ngIf="treeView">
+    <div class="treeview-header">
+        {{ treeView.headerLabel }}
+    </div>
+    <customer-overview-tree-view-item *ngFor="#child of treeView.children" [item]="child"></customer-overview-tree-view-item>
+</div>

@@ -1,0 +1,37 @@
+<h3 class="accent">Kunde öffnen</h3>
+<div class="row medium-space">
+    <div class="col-md-12">
+        <table class="table table-responsive table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th>Anrede</th>
+                    <th>Name</th>
+                    <th>Anschrift</th>
+                    <th>Geburtsdatum</th>
+                    <th class="text-center">Aktionen</th>
+                </tr>
+            </thead>
+            <tbody>
+                <template ngFor #customer [ngForOf]="_customers">
+                    <tr>
+                        <td>{{customer.anrede}}</td>
+                        <td><a [routerLink]="['Customer', { id: customer.partnerId}]" (click)="createDossier(customer)">{{customer.vorname}}
+                            {{customer.name}}</a></td>
+                        <td>{{customer.anschrift.strasse}} {{customer.anschrift.plz}} {{customer.anschrift.ort}}</td>
+                        <td>{{customer.geburtsdatum}}</td>
+                        <td class="text-center">
+                            <las-phone-button [phone]="customer.telnummer"></las-phone-button>
+                            <i class="clickable glyphicon glyphicon-plus" (click)="createOffer(customer)" title="Neues Angebot erstellen"> </i>
+                            <i class="clickable glyphicon glyphicon-align-justify" [routerLink]="['Customer', { id: customer.partnerId}, 'Contracts']" title="Verträge anzeigen"> </i>
+                            <!--<span *ngIf="customer.email">
+                            <a href="mailto:{{ customer.email }}">
+                                <i class="glyphicon glyphicon-envelope"></i>
+                            </a>
+                            </span>-->
+                        </td>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+    </div>
+</div>

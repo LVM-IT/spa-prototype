@@ -1,0 +1,241 @@
+<h3>Angebot bearbeiten</h3>
+<form class="form-horizontal" *ngIf="offer">
+    <h4>Kopfdaten</h4>
+    <div class="row" *ngIf="offer?.customer">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-8">
+            <lvm-control [caption]="'Sparte'">
+                <input type="text" class="form-control" value="Kraftfahrt" disabled/>
+            </lvm-control>
+            <lvm-control [caption]="'Geburtsdatum'">
+                <input type="text" id="gebDat" datepicker [maxDate]="maxGebDate" data-field-id="customer.geburtsdatum" [orientation]="'bottom left'" class="form-control" [initValue]="offer.customer.geburtsdatum" (onDateChanged)="onGebDateChanged($event)" required data-start-disabled disabled lvm-focus />
+            </lvm-control>
+            <lvm-control [caption]="'Rolle'" [helpCaption]="'Hilfe zu Rolle'" [helpText]="'Geben Sie hier die Rolle bitte an. Weitere Informationen erhalten Sie beim Mitarbeitersupport'">
+                <input type="text" help class="form-control" data-field-id="customer.rolle" [(ngModel)]="offer.rolle" data-start-disabled disabled required/>
+            </lvm-control>
+            <lvm-control [caption]="'Zahlungsweise'">
+                <input type="text" class="form-control" [(ngModel)]="offer.zahlungsweise" disabled/>
+            </lvm-control>
+            <lvm-control [caption]="'Beitrag'">
+                <input type="text" class="form-control text-right" [(ngModel)]="offer.beitragZent" disabled/>
+            </lvm-control>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+            <lvm-control [caption]="'Agentur'" [isProtected]="isProtected">
+                <input type="text" class="form-control text-right" data-field-id="customer.agentur" [(ngModel)]="offer.agentur" data-start-disabled disabled required/>
+            </lvm-control>
+            <lvm-locked-control [caption]="'Schäden'">
+                <input type="text" class="form-control text-right" data-field-id="schaeden" [(ngModel)]="offer.schaeden" required/>
+            </lvm-locked-control>
+            <lvm-control [caption]="'Ablauf'">
+                <input type="text" class="form-control" data-field-id="customer.ablauf" [(ngModel)]="offer.ablauf" disabled/>
+            </lvm-control>
+            <lvm-control [caption]="'Versichert ist'">
+                <input type="text" class="form-control" data-field-id="versichertist" [(ngModel)]="offer.versichertist" disabled alt="Berechnetes Feld"/>
+            </lvm-control>
+        </div>
+    </div>
+
+    <h4>Fahrzeugdaten</h4>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-8">
+            <lvm-control [caption]="'Fahrzeugart'">
+                <select class="form-control" data-field-id="fahrzeugdaten.art" [(ngModel)]="offer.fahrzeugdaten.art" (change)="clearRelatedFields()" data-start-disabled disabled >
+                    <option value="pkw">PKW</option>
+                    <option value="lkw">LKW</option>
+                </select>
+            </lvm-control>
+            <lvm-control [caption]="'Kennzeichen'" [helpCaption]="'Hilfe zu Kennzeichen'" [helpText]="'Bitte geben Sie hier das Kennzeichen des Fahrzeugs an. Weitere Informationen erhalten Sie beim Mitarbeitersupport'">
+                <input type="text" help class="form-control" data-field-id="fahrzeugdaten.kennzeichen" [(ngModel)]="offer.fahrzeugdaten.kennzeichen" data-start-disabled disabled required/>
+            </lvm-control>
+            <lvm-control [caption]="'Fahrgestell-Nr.'" [helpCaption]="'Hilfe zu Fahrgestell-Nr.'" [helpText]="'Bitte geben Sie hier die Fahrgestell-Nr. des Fahrzeugs an. Weitere Informationen erhalten Sie beim Mitarbeitersupport'">
+                <input type="text" help class="form-control" data-field-id="fahrzeugdaten.fahrgestell" [(ngModel)]="offer.fahrzeugdaten.fahrgestell" data-start-disabled disabled required/>
+            </lvm-control>
+            <lvm-control [caption]="'Kennzeichen Art'">
+                <input type="text" class="form-control" data-field-id="fahrzeugdaten.kennzeichenart" [(ngModel)]="offer.fahrzeugdaten.kennzeichenart" data-start-disabled disabled required/>
+            </lvm-control>
+
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+            <lvm-control [caption]="'HSN'" >
+                <input type="text" class="form-control text-right" data-field-id="fahrzeugdaten.hsn" [(ngModel)]="offer.fahrzeugdaten.hsn" data-start-disabled disabled required/>
+            </lvm-control>
+            <lvm-control [caption]="'TSN'" >
+                <input type="text" class="form-control text-right" data-field-id="fahrzeugdaten.typschl" [(ngModel)]="offer.fahrzeugdaten.typschl" data-start-disabled disabled required/>
+            </lvm-control>
+            <lvm-control [caption]="'Erstzulassung'">
+                <input type="text" id="erstZulassung" datepicker [maxDate]="maxErstZulassung" class="form-control" [initValue]="offer.fahrzeugdaten.erstzulassung" data-field-id="fahrzeugdaten.erstzulassung" (onDateChanged)="onErstzulassungChanged($event)" data-start-disabled disabled required/>
+            </lvm-control>
+            <lvm-control [caption]="'Leistung (PS)'" [isProtected]="isProtected">
+                <input type="number" min="0" max="999" class="form-control text-right"
+                       [(ngModel)]="offer.fahrzeugdaten.fahrzeugstaerkePS" data-field-id="fahrzeugdaten.fahrzeugstaerkePS" data-start-disabled disabled required/>
+            </lvm-control>
+            <lvm-checkbox [caption]="'Austauschmotor'">
+                <input type="checkbox" [(ngModel)]="offer.fahrzeugdaten.austauschmotor" data-field-id="fahrzeugdaten.austauschmotor" data-start-disabled disabled />
+            </lvm-checkbox>
+            <lvm-checkbox [caption]="'Wechselkennzeichen'">
+                <input type="checkbox" [(ngModel)]="offer.fahrzeugdaten.wechselkennzeichen" data-field-id="fahrzeugdaten.wechselkennzeichen" data-start-disabled disabled />
+            </lvm-checkbox>
+
+        </div>
+    </div>
+
+    <h4>Nutzung</h4>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-8">
+            <lvm-control [caption]="'beliebige Fahrer'">
+                <select class="form-control" [(ngModel)]="offer.nutzung.beliebigeFahrer" data-field-id="nutzung.beliebigeFahrer" data-start-disabled disabled >
+                    <option value="ja">Ja</option>
+                    <option value="nein">Nein</option>
+                    <option value="unbekannt">Unbekannt</option>
+                </select>
+            </lvm-control>
+            <lvm-control [caption]="'Abstellplatz Nachts'">
+                <select class="form-control" [(ngModel)]="offer.nutzung.nachtAbstellplatz" data-field-id="nutzung.nachtAbstellplatz" data-start-disabled disabled >
+                    <option value="straßenrand">Straßenrand</option>
+                    <option value="garage">Garage</option>
+                    <option value="abschließbareGarage">abschließbare Garage</option>
+                    <option value="unterstand">Unterstand</option>
+                </select>
+            </lvm-control>
+            <lvm-control [caption]="'Nutzung'">
+                <select class="form-control" [(ngModel)]="offer.nutzung.nutzung" data-field-id="nutzung.nutzung" data-start-disabled disabled >
+                    <option value="privat">Privat</option>
+                    <option value="dienstlich">Dienstlich</option>
+                    <option value="privatUndDienstlich">Privat & Dienstlich</option>
+                </select>
+            </lvm-control>
+            <lvm-control [caption]="'Wohneigentum'" [isProtected]="isProtected">
+                <select class="form-control" [(ngModel)]="offer.nutzung.wohneigentumart" data-field-id="nutzung.wohneigentumart" data-start-disabled disabled >
+                    <option value="Wohnung">Wohnung</option>
+                    <option value="Haus">Haus</option>
+                </select>
+            </lvm-control>
+
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+            <lvm-control [caption]="'Fahrleistung'">
+                <input type="number" min="0" class="form-control text-right" [(ngModel)]="offer.nutzung.fahrleistungKm" required data-field-id="nutzung.fahrleistungKm" data-start-disabled disabled />
+            </lvm-control>
+            <lvm-control [caption]="'Kilometerstand'">
+                <input type="number" min="0" class="form-control text-right" [(ngModel)]="offer.nutzung.kilometerstand" required data-field-id="nutzung.kilometerstand" data-start-disabled disabled />
+            </lvm-control>
+            <lvm-checkbox [caption]="'abweichender Fahrzeughalter'">
+                <input type="checkbox" [(ngModel)]="offer.nutzung.abweichenderFahrzeughalter" data-field-id="nutzung.abweichenderFahrzeughalter" data-start-disabled disabled />
+            </lvm-checkbox>
+            <lvm-checkbox [caption]="'selbst genutztes Wohneigentum'">
+                <input type="checkbox" [(ngModel)]="offer.nutzung.selbstGenEigentum" data-field-id="nutzung.selbstGenEigentum" data-start-disabled disabled />
+            </lvm-checkbox>
+
+        </div>
+    </div>
+    <h4>Versicherungsschutz</h4>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-8">
+            <lvm-control [caption]="'Haftpflicht SFR'">
+                <select class="form-control" [(ngModel)]="offer.versSchutz.haftpflichSFR" data-field-id="versSchutz.haftpflichSFR" data-start-disabled disabled >
+                    <option value="SF35 20%">SF35 20%</option>
+                    <option value="SF34 20%">SF34 20%</option>
+                    <option value="SF33 20%">SF33 20%</option>
+                    <option value="SF32 20%">SF32 20%</option>
+                    <option value="SF31 21%">SF31 21%</option>
+                    <option value="SF30 21%">SF30 21%</option>
+                    <option value="SF29 21%">SF29 21%</option>
+                    <option value="SF28 22%">SF28 22%</option>
+                    <option value="SF27 22%">SF27 22%</option>
+                    <option value="SF26 22%">SF26 22%</option>
+                    <option value="SF25 23%">SF25 23%</option>
+                    <option value="SF24 23%">SF24 23%</option>
+                    <option value="SF23 24%">SF23 24%</option>
+                    <option value="SF22 24%">SF22 24%</option>
+                    <option value="SF21 25%">SF21 25%</option>
+                    <option value="SF20 25%">SF20 25%</option>
+                    <option value="SF19 26%">SF19 26%</option>
+                    <option value="SF18 26%">SF18 26%</option>
+                    <option value="SF17 27%">SF17 27%</option>
+                    <option value="SF16 28%">SF16 28%</option>
+                    <option value="SF15 29%">SF15 29%</option>
+                    <option value="SF14 29%">SF14 29%</option>
+                    <option value="SF13 30%">SF13 30%</option>
+                    <option value="SF12 31%">SF12 31%</option>
+                    <option value="SF11 33%">SF11 33%</option>
+                    <option value="SF10 34%">SF10 34%</option>
+                    <option value="SF9 35%">SF9 35%</option>
+                    <option value="SF8 37%">SF8 37%</option>
+                    <option value="SF7 38%">SF7 38%</option>
+                    <option value="SF6 40%">SF6 40%</option>
+                    <option value="SF5 43%">SF5 43%</option>
+                    <option value="SF4 45%">SF4 45%</option>
+                    <option value="SF3 48%">SF3 48%</option>
+                    <option value="SF2 52%">SF2 52%</option>
+                    <option value="SF1 56%">SF1 56%</option>
+                    <option value="SF1/2 70%">SF1/2 70%</option>
+                    <option value="S 80%">S 80%</option>
+                    <option value="0 100%">0 100%</option>
+                    <option value="M 125%">M 125%</option>
+                </select>
+            </lvm-control>
+            <lvm-control [caption]="'Vollkasko SFR'">
+                <select class="form-control" [(ngModel)]="offer.versSchutz.volkaskoSFR" data-field-id="versSchutz.volkaskoSFR" data-start-disabled disabled >
+                    <option value="SF35 20%"></option>
+                    <option value="SF34 20%">SF35 20%</option>
+                    <option value="SF33 20%">SF34 20%</option>
+                    <option value="SF32 20%">SF33 20%</option>
+                    <option value="SF31 22%">SF32 20%</option>
+                    <option value="SF30 22%">SF31 22%</option>
+                    <option value="SF29 22%">SF30 22%</option>
+                    <option value="SF28 23%">SF29 22%</option>
+                    <option value="SF27 23%">SF28 23%</option>
+                    <option value="SF26 24%">SF27 23%</option>
+                    <option value="SF25 24%">SF26 24%</option>
+                    <option value="SF24 24%">SF25 24%</option>
+                    <option value="SF23 25%">SF24 24%</option>
+                    <option value="SF22 25%">SF23 25%</option>
+                    <option value="SF21 26%">SF22 25%</option>
+                    <option value="SF20 26%">SF21 26%</option>
+                    <option value="SF19 27%">SF20 26%</option>
+                    <option value="SF18 28%">SF19 27%</option>
+                    <option value="SF17 28%">SF18 28%</option>
+                    <option value="SF16 29%">SF17 28%</option>
+                    <option value="SF15 30%">SF16 29%</option>
+                    <option value="SF14 31%">SF15 30%</option>
+                    <option value="SF13 31%">SF14 31%</option>
+                    <option value="SF12 32%">SF13 31%</option>
+                    <option value="SF11 33%">SF12 32%</option>
+                    <option value="SF10 34%">SF11 33%</option>
+                    <option value="SF9 36%">SF10 34%</option>
+                    <option value="SF8 37%">SF9 36%</option>
+                    <option value="SF7 38%">SF8 37%</option>
+                    <option value="SF6 40%">SF7 38%</option>
+                    <option value="SF5 42%">SF6 40%</option>
+                    <option value="SF4 44%">SF5 42%</option>
+                    <option value="SF3 46%">SF4 44%</option>
+                    <option value="SF2 49%">SF3 46%</option>
+                    <option value="SF1 51%">SF2 49%</option>
+                    <option value="SF1/2 55%">SF1 51%</option>
+                    <option value="0 57%">SF1/2 55%</option>
+                    <option value="M 82%">0 57%</option>
+                </select>
+            </lvm-control>
+            <lvm-control [caption]="'Tarifgruppe'" [isProtected]="isProtected">
+                <select class="form-control" [(ngModel)]="offer.versSchutz.tarifgruppe" data-field-id="versSchutz.tarifgruppe" data-start-disabled disabled >
+                    <option value="normal">normal</option>
+                    <option value="mitarbeiter">Mitarbeiter</option>
+                    <option value="flotte">Flotte</option>
+                </select>
+            </lvm-control>
+            <lvm-control [caption]="'Zahlungsweise'">
+                <select class="form-control" [(ngModel)]="offer.zahlungsweise" data-field-id="zahlungsweise" data-start-disabled disabled >
+                    <option value="monatlich">monatlich</option>
+                    <option value="jährlich">jährlich</option>
+                </select>
+            </lvm-control>
+
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+            <lvm-control [caption]="'Vers. Beginn'">
+                <input type="text" id="versBeginn" datepicker [minDate]="minBeginn" class="form-control" [initValue]="offer.versSchutz.versBeginn" (onDateChanged)="onVersBeginnChanged($event)" required data-start-disabled disabled data-field-id="versSchutz.versBeginn"/>
+            </lvm-control>
+
+        </div>
+    </div>
+</form>

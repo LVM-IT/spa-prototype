@@ -1,0 +1,17 @@
+<div class="row max-flex-height flex-container" *ngIf="customer">
+    <div class="col-md-12 max-flex-height flex-container">
+        <customer-metadata [customer]="customer"></customer-metadata>
+
+        <div class="row max-flex-height flex-container flex-direction-row">
+            <div class="col-lg-2 col-md-2 treeview-container">
+                <customer-overview-tree-view [treeView]="treeView"></customer-overview-tree-view>
+            </div>
+            <div class="col-lg-10 col-md-10 max-flex-height flex-container" style="overflow-y: auto">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</div>
+<button-row [customer]="customer" [contract-id]="contractId"></button-row>
+<las-footer [customerContract]="customerContracts">
+</las-footer>

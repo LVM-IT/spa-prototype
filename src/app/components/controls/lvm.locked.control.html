@@ -1,0 +1,9 @@
+<div class="form-group" data-toggle="popover" [title]="helpCaption" data-container="body" [attr.data-content]="helpText">
+    <label class="col-sm-3 control-label">{{caption}}</label>
+    <div class="col-sm-9">
+        <div class="input-group">
+            <ng-content></ng-content>
+            <span class="input-group-addon clickable" (click)="unlockControl()">🔒</span>
+        </div>
+    </div>
+</div>

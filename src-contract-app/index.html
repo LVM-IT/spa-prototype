@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Verträge</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="scripts/bootstrap/css/bundle.css">
+  <link rel="stylesheet" href="styles/main.css">
+
+</head>
+<body ng-app="lvmContractApp">
+  <nav class="navbar topbar" role="navigation">
+    <div class="container-fluid no-margin">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topnav">
+          <i class="icon-list-1-filled"></i>
+          Menü
+        </button>
+        <a class="navbar-brand" href="/"></a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="topnav" ng-controller="navController as nav">
+        <ul class="nav navbar-nav nav-main-links">
+          <li>
+            <a ui-sref="contract.overview({contractId: nav.contractId})" open-in-new-tab>
+              <i class="fa fa-search"></i> Vertragsdaten
+            </a>
+          </li>
+          <li>
+            <a ui-sref="contract.persons({contractId: nav.contractId})" open-in-new-tab>
+                Versicherte Personen
+
+            </a>
+          </li>
+          <li>
+            <a ui-sref="contract.other({contractId: nav.contractId})" open-in-new-tab>
+              Sonstige Vertragsdaten
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="container-fluid no-margin">
+    <div ui-view></div>
+  </div>
+
+  <script src="scripts/systemjs/dist/system-polyfills.js"></script>
+  <script src="scripts/systemjs/dist/system.js"></script>
+  <script src="scripts/jquery/jquery.min.js"></script>
+  <script src="scripts/bootstrap/js/bootstrap.min.js"></script>
+  <script src="scripts/angular/angular.min.js"></script>
+  <script src="scripts/angular-ui-router/angular-ui-router.js"></script>
+  <script src="app/app.js"></script>
+  <script src="app/navController.js"></script>
+  <script src="app/states/persons/persons.js"></script>
+  <script src="app/states/persons/detail/detail.js"></script>
+  <script src="app/states/persons/detail/deckung/deckung.js"></script>
+  <script src="app/states/other/other.js"></script>
+  <script src="app/states/overview/overview.js"></script>
+  <script src="app/services/contractService.js"></script>
+  <script src="app/services/lasService.js"></script>
+  <script src="app/services/sampleDataService.js"></script>
+  <script src="app/services/linkService.js"></script>
+  <script src="app/filters/yesNoFilter.js"></script>
+  <script src="app/directives/openInNewTab.js"></script>
+  <script>
+    System.config({
+      packages: {
+        lvm: { format: 'register', defaultExtension: 'js' }
+      }
+    });
+
+  </script>
+
+
+
+</body>
+</html>

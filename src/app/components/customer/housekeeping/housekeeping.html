@@ -1,0 +1,32 @@
+<h4>Haushalt</h4>
+<div class="row" *ngIf="housekeepingEntries">
+    <div class="col-md-12">
+        <table class="table table-responsive table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th>Beziehung</th>
+                    <th>Vorname</th>
+                    <th>Name</th>
+                    <th>Geburtsdatum</th>
+                </tr>
+            </thead>
+            <tbody>
+                <template ngFor #c [ngForOf]="housekeepingEntries">
+                    <tr>
+                        <td>{{c.beziehung}}</td>
+                        <td>{{c.vorname}}</td>
+                        <td>{{c.name}}</td>
+                        <td>{{c.Geburtsdatum}}</td>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div *ngIf="!housekeepingEntries" class="row">
+    <div class="col-md-8">
+        <div class="well">
+            Für diesen Partner liegen noch keine Haushaltsdaten vor
+        </div>
+    </div>
+</div>

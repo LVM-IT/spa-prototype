@@ -1,0 +1,66 @@
+<nav class="navbar topbar" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topnav">
+                <i class="icon-list-1-filled"></i>
+                Menü
+            </button>
+            <a class="navbar-brand" href="/">
+                <img src="images/lvm-logo.svg" alt="LVM-Logo" class="img-responsive">
+            </a>
+        </div>
+        <div class="collapse navbar-collapse" id="topnav">
+            <ul class="nav navbar-nav nav-main-links">
+                <li>
+                    <a [routerLink]="['Dashboard']" (click)="injectClick()">
+                        <span class="glyphicon glyphicon-search"></span> Kundensuche
+                    </a>
+                </li>
+                <li>
+                    <a [routerLink]="['CustomerList']" (click)="injectClick()">
+                        <span class="glyphicon glyphicon-user"></span>
+                        Kunde öffnen
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle topbar-vorgaenge-link" data-toggle="dropdown"
+                       id="dropdownMenuVorgaenge" aria-haspopup="true" aria-expanded="true">
+                        <span class="glyphicon glyphicon-briefcase"></span>
+                        <span>Meine Vorgänge</span>
+                        <span class="icon-arrow-65-filled"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuVorgaenge">
+                        <dossiers></dossiers>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle topbar-user-link" data-toggle="dropdown">
+                        <span class="topbar-user icon-user-2-filled"></span>
+                        <span class="topbar-user-label">Thomas Müller</span>
+                        <span class="icon-arrow-65-filled"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <user-menu></user-menu>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle topbar-user-link" data-toggle="dropdown"
+                       id="dropdownMenuNotifications" aria-haspopup="true" aria-expanded="true">
+                        <span>Apps</span>
+                        <span class="icon-arrow-65-filled"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuNotifications">
+                        <app-menu></app-menu>
+                    </ul>
+                </li>
+                <li>
+                    <a class='clickable accent' (click)="togglePrivacy()"><span class="glyphicon glyphicon-eye-open" [class.red]="isProtected"></span></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+

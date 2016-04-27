@@ -1,0 +1,12 @@
+node_modules
+.idea
+typings
+npm-debug.log
+dist-core
+dist
+src-contract-app/lvm
+src-job-search-app/lvm
+src-wizard-app/lvm
+src-schufa-app/lvm
+.DS_Store
+!**/systemjs/dist

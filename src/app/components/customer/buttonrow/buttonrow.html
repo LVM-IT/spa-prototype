@@ -1,0 +1,34 @@
+<div class="row footer-row no-margin">
+    <div>
+        <div class="pull-left">
+            <a class="btn btn-sm btn-danger" (click)="closeCustomer()">Kunde schließen</a>
+        </div>
+    </div>
+
+    <div>
+        <div class="pull-right">
+            <div *ngIf="scope==='customer' || scope==='contract'" class="btn-group dropup">
+                <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">Angebot erstellen <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="clickable" (click)="createOffer()">Kraftfahrt Angebot erstellen</a>
+                    </li>
+                </ul>
+            </div>
+            <button *ngIf="scope==='contract'" class="btn btn-sm btn-success"
+                    [routerLink]="['CreateDamage', {contractId: scopeId}]">Schaden erfassen
+            </button>
+            <button *ngIf="scope==='contract'" class="btn btn-sm btn-default" (click)="createLetter()">Brief erstellen
+            </button>
+            <button *ngIf="scope==='offer'" class="btn btn-sm btn-default" (click)="request('berechnen')">Berechnen
+            </button>
+            <button *ngIf="scope==='offer' || scope==='damage'" class="btn btn-sm btn-default"
+                    (click)="request('erstellen')">Speichern
+            </button>
+            <button *ngIf="scope==='editOffer'" class="btn btn-sm btn-default" (click)="request('bearbeiten')">Bearbeiten</button>
+            <button class="btn btn-sm btn-default">Büro</button>
+            <button class="btn btn-sm btn-default">Kontakt</button>
+        </div>
+    </div>
+</div>
