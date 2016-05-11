@@ -20,7 +20,7 @@ You can visit http://localhost:8000 to see the application.
 
 ### general documentation
 
-This repository was created as part of the evaluation project "single page application (SPA) and rest oriented client architecture (RoCA)". Click [here] (http://lvm-it.github.io) for more information.
+This repository was created as part of the evaluation project "single page application (SPA) and rest oriented client architecture (RoCA)". [More information] (http://lvm-it.github.io) .
 
 ## Deutsche Version
 
