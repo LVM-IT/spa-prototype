@@ -16,7 +16,8 @@ node.js >= 4.0
 npm install
 npm run start
 ```
-You can visit http://localhost:8000 to see the application.
+You can visit http://localhost:8000 to see the application. (contract app with http://localhost:9998/, job search app with http://localhost:9997, schufa app with http://localhost:9995, wizard app with http://localhost:9996)
+
 
 ### general documentation
 
@@ -38,7 +39,7 @@ npm run start
 
 Der Browser öffnet hierbei automatisch die App
 
-Sie finden die Anwendung unter http://localhost:8000
+Sie finden die Anwendung unter http://localhost:8000  (Vertrag Anwendung unter http://localhost:9998/, Berufssuche unter http://localhost:9997, Schufa-Anwendung unter http://localhost:9995, Briefschreibung-Wizard unter http://localhost:9996)
 
 ### Dokumentation
 
