@@ -4,15 +4,41 @@
 
 ## english version
 
-TODO
+## Prerequisites
+
+```
+node.js >= 4.0
+```
+
+## Run with:
+
+```
+npm install
+npm run start
+```
+You can visit http://localhost:8000 to see the application.
+
+### general documentation
+
+This repository was created as part of the evaluation project "single page application (SPA) and rest oriented client architecture (RoCA)". Click [here] (http://lvm-it.github.io) for more information.
 
 ## Deutsche Version
 
-### Prototyp starten
+# Voraussetzungen
+```
+node.js >= 4.0
+```
 
-Nach dem Klonen des Repositories müssen die Abhängigkeiten mit `npm install` installiert werden.
+### Anwendung starten
 
-Die Anwendung kann durch `npm run start` gestartet werden. Der Browser öffnet hierbei automatisch die App
+```
+npm install
+npm run start
+```
+
+Der Browser öffnet hierbei automatisch die App
+
+Sie finden die Anwendung unter http://localhost:8000
 
 ### Dokumentation
 
@@ -20,5 +46,5 @@ Die Dokumentation des PoC ist [hier zu finden](docs/readme.md)
 
 ### Allgemeine Dokumentation
 
-Dieses Projekt ist entstanden im Rahmen einer Evaluation der Architekturen Single Page Application (SPA) und rest oriented client architecture (ROCA). Weitere Informationen befinden sich [hier] (http://lvm-it.github.io)
+Dieses Projekt ist entstanden im Rahmen einer Evaluation der Architekturen Single Page Application (SPA) und rest oriented client architecture (ROCA). Weitere Informationen befinden sich [hier] (http://lvm-it.github.io) .
 
