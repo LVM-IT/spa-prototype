@@ -22,7 +22,7 @@
   },
   "keywords": [],
   "author": "Thinktecture AG <office@thinktecture.com>",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/thinktecture/lvm-prototyp/issues"
   },
