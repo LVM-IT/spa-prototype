@@ -18,15 +18,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/thinktecture/lvm-prototyp.git"
+    "url": "git+https://github.com/LVM-IT/spa-prototype"
   },
   "keywords": [],
-  "author": "Thinktecture AG <office@thinktecture.com>",
+  "author": "LVM Versicherung",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/thinktecture/lvm-prototyp/issues"
+    "url": "https://github.com/LVM-IT/spa-prototype/issues"
   },
-  "homepage": "https://github.com/thinktecture/lvm-prototyp#readme",
+  "homepage": "https://github.com/LVM-IT/spa-prototype#readme",
   "devDependencies": {
     "angular2": "2.0.0-beta.12",
     "babel-cli": "^6.6.5",
