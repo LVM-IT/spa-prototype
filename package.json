@@ -14,7 +14,9 @@
     "start": "npm run build && concurrently \"npm run watch\" \"npm run lite\" \"npm run contract-app\" \"npm run job-search-app\" \"npm run wizard-app\" \"npm run schufa-app\" ",
     "typings": "typings",
     "wizard": "babel --presets react src-wizard-app/app --watch --out-dir src-wizard-app/dist",
-    "cache-server": "npm run build && node ./cacheServers"
+    "cache-server": "npm run build && node ./cacheServers",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -69,6 +71,8 @@
     "basic-auth": "^1.0.3",
     "compression": "^1.6.1",
     "express": "^4.13.4",
-    "ms": "^0.7.1"
-  }
+    "ms": "^2.0.0",
+    "snyk": "^1.30.1"
+  },
+  "snyk": true
 }
